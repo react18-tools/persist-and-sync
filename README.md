@@ -1,4 +1,4 @@
-# PersistAndSync Zustand Store [![Version](https://img.shields.io/npm/v/persistnsync.svg?colorB=green)](https://www.npmjs.com/package/persistnsync) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/persistnsync.svg)](https://www.npmjs.com/package/persistnsync) [![Unit Tests](https://github.com/mayank1513/nextjs-themes/actions/workflows/test.yml/badge.svg)](https://github.com/mayank1513/nextjs-themes/actions/workflows/test.yml) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/persistnsync)
+# PersistAndSync Zustand Store [![Version](https://img.shields.io/npm/v/persist-and-sync.svg?colorB=green)](https://www.npmjs.com/package/persist-and-sync) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/persist-and-sync.svg)](https://www.npmjs.com/package/persist-and-sync) [![Unit Tests](https://github.com/mayank1513/nextjs-themes/actions/workflows/test.yml/badge.svg)](https://github.com/mayank1513/nextjs-themes/actions/workflows/test.yml) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/persist-and-sync)
 
 > Zustand middleware to easily persist and sync Zustand state between tabs / windows / iframes (Same Origin)
 
@@ -13,11 +13,11 @@
 ## Install
 
 ```bash
-$ pnpm add persistnsync
+$ pnpm add persist-and-sync
 # or
-$ npm install persistnsync
+$ npm install persist-and-sync
 # or
-$ yarn add persistnsync
+$ yarn add persist-and-sync
 ```
 
 ## Usage
@@ -26,7 +26,7 @@ Simply add the middleware while creating the store and the rest will be taken ca
 
 ```ts
 import { create } from "zustand";
-import { persistNSync } from "persistnsync";
+import { persistNSync } from "persist-and-sync";
 
 type MyStore = {
 	count: number;

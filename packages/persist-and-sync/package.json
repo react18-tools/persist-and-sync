@@ -1,5 +1,5 @@
 {
-	"name": "persistnsync",
+	"name": "persist-and-sync",
 	"author": "Mayank Kumar Chaudhari <https://mayank-chaudhari.vercel.app>",
 	"version": "0.1.0",
 	"description": "Zustand middleware to easily persist and sync Zustand state between tabs and windows",

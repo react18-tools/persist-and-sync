@@ -1,4 +1,6 @@
-# PersistAndSync Zustand Store [![Maintainability](https://api.codeclimate.com/v1/badges/5355eb02cfedc9184e3f/maintainability)](https://codeclimate.com/github/mayank1513/persist-and-sync/maintainability) [![Version](https://img.shields.io/npm/v/persist-and-sync.svg?colorB=green)](https://www.npmjs.com/package/persist-and-sync) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/persist-and-sync.svg)](https://www.npmjs.com/package/persist-and-sync) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/persist-and-sync)
+# PersistAndSync Zustand Store 
+
+[![test](https://github.com/mayank1513/persist-and-sync/actions/workflows/test.yml/badge.svg)](https://github.com/mayank1513/persist-and-sync/actions/workflows/test.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/5355eb02cfedc9184e3f/maintainability)](https://codeclimate.com/github/mayank1513/persist-and-sync/maintainability) [![codecov](https://codecov.io/gh/mayank1513/persist-and-sync/graph/badge.svg)](https://codecov.io/gh/mayank1513/persist-and-sync) [![Version](https://img.shields.io/npm/v/persist-and-sync.svg?colorB=green)](https://www.npmjs.com/package/persist-and-sync) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/persist-and-sync.svg)](https://www.npmjs.com/package/persist-and-sync) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/persist-and-sync)
 
 > Zustand middleware to easily persist and sync Zustand state between tabs / windows / iframes (Same Origin)
 
@@ -78,6 +80,10 @@ use `regExpToIgnore: /^(field1|field2|field3)$/`
 ## Roadmap
 
 - [ ] `regExpToInclude` -> once implemented, passing this parameter will sync only matching fields
+
+### 🤩 Don't forger to start [this repo](https://github.com/mayank1513/persist-and-sync)!
+
+Want handson course for getting started with Turborepo? Check out [React and Next.js with TypeScript](https://mayank-chaudhari.vercel.app/courses/react-and-next-js-with-typescript) and [The Game of Chess with Next.js, React and TypeScrypt](https://www.udemy.com/course/game-of-chess-with-nextjs-react-and-typescrypt/?referralCode=851A28F10B254A8523FE)
 
 ## License
 

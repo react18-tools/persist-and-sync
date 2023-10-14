@@ -1,0 +1,38 @@
+name: Publish to NPM
+
+# publish only when package json has changed - assuming version upgrade
+on:
+  push:
+    branches: [main]
+    paths: "packages/persist-and-sync/package.json"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
+
+    defaults:
+      run:
+        working-directory: ./packages/persist-and-sync
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v3
+        with:
+          registry-url: https://registry.npmjs.org
+          node-version: 18
+      - run: npm i -g pnpm && pnpm i
+        name: Install dependencies
+        # fail and not publish if any of the unit tests are failing
+      - name: Test
+        run: pnpm test
+      - name: Publish to NPM
+        run: pnpm build && pnpm publish-package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+

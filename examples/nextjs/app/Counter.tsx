@@ -1,5 +1,5 @@
 "use client";
-import { useMyStore } from "../store";
+import { useMyStore } from "./store";
 import styles from "./page.module.css";
 
 interface CounterProps {

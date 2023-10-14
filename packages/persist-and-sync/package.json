@@ -24,9 +24,9 @@
 		"url": "https://github.com/sponsors/mayank1513"
 	},
 	"devDependencies": {
-		"@types/node": "^20.4.5",
-		"typescript": "^5.1.6",
-		"zustand": "^4.4.1"
+		"@types/node": "^20.8.6",
+		"typescript": "^5.2.2",
+		"zustand": "^4.4.3"
 	},
 	"peerDependencies": {
 		"zustand": "^3 || ^4"

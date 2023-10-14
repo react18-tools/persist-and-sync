@@ -9,19 +9,19 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"next": "^13.4.19",
+		"next": "^13.5.4",
+		"persist-and-sync": "workspace:*",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"persist-and-sync": "workspace:*",
-		"zustand": "^4.4.1"
+		"zustand": "^4.4.3"
 	},
 	"devDependencies": {
-		"@next/eslint-plugin-next": "^13.4.19",
-		"@types/node": "^17.0.12",
-		"@types/react": "^18.0.22",
-		"@types/react-dom": "^18.0.7",
+		"@next/eslint-plugin-next": "^13.5.4",
+		"@types/node": "^20.8.6",
+		"@types/react": "^18.2.28",
+		"@types/react-dom": "^18.2.13",
 		"eslint-config-custom": "workspace:*",
 		"tsconfig": "workspace:*",
-		"typescript": "^4.5.3"
+		"typescript": "^5.2.2"
 	}
 }

@@ -9,6 +9,7 @@
 		"persist-and-sync#build": {
 			"cache": false
 		},
+		"test": {},
 		"lint": {},
 		"dev": {
 			"cache": false,

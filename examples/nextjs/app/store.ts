@@ -20,6 +20,6 @@ export const useMyStore = create<MyStoreType>()(
 				set(state => ({ ...state, _count }));
 			},
 		}),
-		{ name: "example", regExpToIgnore: /^_/ },
+		{ name: "example", exclude: ["_count"] },
 	),
 );

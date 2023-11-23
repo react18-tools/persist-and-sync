@@ -4,9 +4,9 @@
 
 > Zustand middleware to easily persist and sync Zustand state between tabs / windows / iframes (Same Origin)
 
-> Motivation: Recently I got cought up in several issues working with persist miggleware and syncing tabs with zustand. This is a simple light weight middleware to persist and instantly share state between tabs or windows
+> Motivation: Recently I got caught up in several issues working with persist middleware and syncing tabs with Zustand. This is a simple light weight middleware to persist and instantly share state between tabs or windows
 
-- ✅ 🐙 (642 Bytes gZiped) ~ 0.5 kB size cross-tab state sharing + persistance for zustand
+- ✅ 🐙 (642 Bytes gZiped) ~ 0.5 kB size cross-tab state sharing + persistence for zustand
 - ✅ Full TypeScript Support
 - ✅ solid reliability in 1 writing and n reading tab-scenarios (with changing writing tab)
 - ✅ Fire and forget approach of always using the latest state. Perfect for single user systems
@@ -83,7 +83,7 @@ use `regExpToIgnore: /^(field1|field2|field3)$/`
 
 ### 🤩 Don't forger to start [this repo](https://github.com/mayank1513/persist-and-sync)!
 
-Want handson course for getting started with Turborepo? Check out [React and Next.js with TypeScript](https://mayank-chaudhari.vercel.app/courses/react-and-next-js-with-typescript) and [The Game of Chess with Next.js, React and TypeScrypt](https://www.udemy.com/course/game-of-chess-with-nextjs-react-and-typescrypt/?referralCode=851A28F10B254A8523FE)
+Want hands-on course for getting started with Turborepo? Check out [React and Next.js with TypeScript](https://mayank-chaudhari.vercel.app/courses/react-and-next-js-with-typescript) and [The Game of Chess with Next.js, React and TypeScrypt](https://www.udemy.com/course/game-of-chess-with-nextjs-react-and-typescrypt/?referralCode=851A28F10B254A8523FE)
 
 ## License
 

@@ -87,6 +87,7 @@ export const useMyStore = create<MyStoreType>()(
 ```
 
 > It is good to note here that each element of `include` and `exclude` array can either be a string or a regular expression.
+> To use regular expression, you should either use `new RegExp()` or `/your-expression/` syntax. Double or single quoted strings are not treated as regular expression.
 
 ## Legacy / Deprecated
 

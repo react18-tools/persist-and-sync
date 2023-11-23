@@ -1,4 +1,4 @@
-# PersistAndSync Zustand Store 
+# PersistAndSync Zustand Store
 
 [![test](https://github.com/mayank1513/persist-and-sync/actions/workflows/test.yml/badge.svg)](https://github.com/mayank1513/persist-and-sync/actions/workflows/test.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/5355eb02cfedc9184e3f/maintainability)](https://codeclimate.com/github/mayank1513/persist-and-sync/maintainability) [![codecov](https://codecov.io/gh/mayank1513/persist-and-sync/graph/badge.svg)](https://codecov.io/gh/mayank1513/persist-and-sync) [![Version](https://img.shields.io/npm/v/persist-and-sync.svg?colorB=green)](https://www.npmjs.com/package/persist-and-sync) [![Downloads](https://img.jsdelivr.com/img.shields.io/npm/dt/persist-and-sync.svg)](https://www.npmjs.com/package/persist-and-sync) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/persist-and-sync)
 

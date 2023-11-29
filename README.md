@@ -61,10 +61,9 @@ type PersistNSyncOptionsType = {
 	regExpToIgnore?: RegExp;
 	include?: (string | RegExp)[];
 	exclude?: (string | RegExp)[];
+	storage?: "localStorage" | "sessionStorage" | "cookies" /** Added in v1.1.0 */;
 };
 ```
-
-If `include` field is missing in the options, all the fields included by default (Filtered based on exclude only, if present). `exclude` filed is used to exclude fields from persisting and syncing. `exclude` is applied after `include`. This means that if you provided `include` array without including a specific field or a regular expression matching that field, it will be excluded irrespective of `exclude` array.
 
 **Example**
 
@@ -88,6 +87,7 @@ export const useMyStore = create<MyStoreType>()(
 
 > It is good to note here that each element of `include` and `exclude` array can either be a string or a regular expression.
 > To use regular expression, you should either use `new RegExp()` or `/your-expression/` syntax. Double or single quoted strings are not treated as regular expression.
+> You can specify whether to use either `"localStorage"`, `"sessionStorage"`, or `"cookies"` to persist the state - default `"localStorage"`.
 
 ## Legacy / Deprecated
 

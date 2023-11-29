@@ -1,0 +1,11 @@
+name: Sync
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - run: gh repo sync "mayank1513/persist-and-sync" -b "main"

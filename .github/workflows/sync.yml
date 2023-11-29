@@ -7,5 +7,9 @@ on:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - run: gh repo sync "mayank1513/persist-and-sync" -b "main"
+        env:
+          GH_TOKEN: ${{ github.token }}

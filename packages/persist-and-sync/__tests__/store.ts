@@ -1,4 +1,4 @@
-import { create } from "../vitest-setup";
+import { create } from "../vitest.setup";
 import { persistNSync } from "../src";
 
 type MyStoreType = {
@@ -16,6 +16,18 @@ export const useMyStore = create<MyStoreType>(
 			setCount: count => set(state => ({ ...state, count })),
 			set_Count: _count => set(state => ({ ...state, _count })),
 		}),
-		{ name: "example", regExpToIgnore: /^_/ },
+		{ name: "example", exclude: [/^_/] },
+	),
+);
+
+export const useCookieStore = create<MyStoreType>(
+	persistNSync(
+		set => ({
+			count: 0,
+			_count: 0 /** skipped as it matches the regexp provided */,
+			setCount: count => set(state => ({ ...state, count })),
+			set_Count: _count => set(state => ({ ...state, _count })),
+		}),
+		{ name: "example", include: [/count/], exclude: [/^_/], storage: "cookies" },
 	),
 );

@@ -1,7 +1,7 @@
 import { act, cleanup, renderHook } from "@testing-library/react";
 
 import { afterEach, describe, test } from "vitest";
-import { useMyStore } from "./store";
+import { useCookieStore, useMyStore } from "./store";
 
 describe.concurrent("Setting state", () => {
 	afterEach(cleanup);
@@ -11,7 +11,7 @@ describe.concurrent("Setting state", () => {
 	});
 
 	test("test setting state", async ({ expect }) => {
-		const { result } = renderHook(() => useMyStore());
+		const { result } = renderHook(() => useCookieStore());
 		act(() => result.current.setCount(5));
 		expect(result.current.count).toBe(5);
 		expect(localStorage.getItem("example")).toBe('{"count":5}');

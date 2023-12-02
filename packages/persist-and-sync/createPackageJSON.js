@@ -35,10 +35,10 @@ if (process.env.TOKEN) {
 	});
 }
 delete packageJson.scripts;
-newPackageJSON.main = packageJson.main.split("/")[1];
-newPackageJSON.types = packageJson.types.split("/")[1];
+packageJson.main = packageJson.main.split("/")[1];
+packageJson.types = packageJson.types.split("/")[1];
 
 fs.writeFileSync(
 	path.resolve(__dirname, "dist", "package.json"),
-	JSON.stringify(newPackageJSON, null, 2),
+	JSON.stringify(packageJson, null, 2),
 );

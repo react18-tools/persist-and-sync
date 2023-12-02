@@ -1,5 +1,11 @@
 # persist-and-sync
 
+## 1.1.1
+
+### Patch Changes
+
+- Updated internal sync mechanism
+
 ## 1.1.0
 
 ### Minor Changes

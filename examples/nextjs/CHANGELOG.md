@@ -1,5 +1,12 @@
 # nextjs-example
 
+## 1.0.3
+
+### Patch Changes
+
+- Updated dependencies
+  - persist-and-sync@1.1.1
+
 ## 1.0.2
 
 ### Patch Changes

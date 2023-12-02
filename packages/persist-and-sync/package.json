@@ -1,7 +1,7 @@
 {
 	"name": "persist-and-sync",
 	"author": "Mayank Kumar Chaudhari <https://mayank-chaudhari.vercel.app>",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Zustand middleware to easily persist and sync Zustand state between tabs and windows",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -26,13 +26,14 @@
 	},
 	"devDependencies": {
 		"@testing-library/react": "^14.1.2",
-		"@types/node": "^20.9.4",
+		"@types/node": "^20.10.2",
 		"@vitejs/plugin-react": "^4.2.0",
 		"@vitest/coverage-v8": "^0.34.6",
-		"jsdom": "^22.1.0",
+		"jsdom": "^23.0.1",
+		"octokit": "^3.1.2",
 		"typescript": "^5.3.2",
 		"vitest": "^0.34.6",
-		"zustand": "^4.4.6"
+		"zustand": "^4.4.7"
 	},
 	"peerDependencies": {
 		"zustand": "^3 || ^4"

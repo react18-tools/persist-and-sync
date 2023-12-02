@@ -27,7 +27,7 @@ function getItem(options: PersistNSyncOptionsType) {
 function setItem(options: PersistNSyncOptionsType, value: string) {
 	const { storage } = options;
 	if (storage === "cookies") {
-		document.cookie = `${options.name}=${value}; max-age=31536000`;
+		document.cookie = `${options.name}=${value}; max-age=31536000; SameSite=Strict;`;
 	}
 	if (storage === "sessionStorage") sessionStorage.setItem(options.name, value);
 	else localStorage.setItem(options.name, value);
@@ -51,24 +51,22 @@ export const persistNSync: PersistNSyncType = (stateCreator, options) => (set, g
 	const channel = globalThis.BroadcastChannel ? new BroadcastChannel(name) : undefined;
 
 	const set_: typeof set = (newStateOrPartialOrFunction, replace) => {
-		const prevState = get() as { [k: string]: any };
 		set(newStateOrPartialOrFunction, replace);
 		const newState = get() as { [k: string]: any };
-		saveAndSync({ newState, prevState, channel, options });
+		saveAndSync({ newState, options });
 	};
 
-	if (channel) {
-		channel.onmessage = e => {
-			set({ ...get(), ...e.data });
-		};
-	}
+	window.addEventListener("storage", e => {
+		if (e.key === name) {
+			const newState = JSON.parse(e.newValue || "{}");
+			set({ ...get(), ...newState });
+		}
+	});
 	return stateCreator(set_, get, store);
 };
 
 interface SaveAndSyncProps {
 	newState: { [k: string]: any };
-	prevState: { [k: string]: any };
-	channel?: BroadcastChannel;
 	options: PersistNSyncOptionsType;
 }
 
@@ -107,7 +105,7 @@ const getKeysToPersistAndSyncMemoised = (() => {
 	};
 })();
 
-function saveAndSync({ newState, prevState, channel, options }: SaveAndSyncProps) {
+function saveAndSync({ newState, options }: SaveAndSyncProps) {
 	const keysToPersistAndSync = getKeysToPersistAndSyncMemoised(Object.keys(newState), options);
 
 	if (keysToPersistAndSync.length === 0) return;
@@ -115,13 +113,4 @@ function saveAndSync({ newState, prevState, channel, options }: SaveAndSyncProps
 	const stateToStore: { [k: string]: any } = {};
 	keysToPersistAndSync.forEach(key => (stateToStore[key] = newState[key]));
 	setItem(options, JSON.stringify(stateToStore));
-
-	if (!channel) return;
-	const stateUpdates: { [k: string]: any } = {};
-	keysToPersistAndSync.forEach(key => {
-		if (newState[key] !== prevState[key]) stateUpdates[key] = newState[key];
-	});
-	if (Object.keys(stateUpdates).length) {
-		channel?.postMessage(stateUpdates);
-	}
 }

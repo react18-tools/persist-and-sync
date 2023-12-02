@@ -48,8 +48,6 @@ export const persistNSync: PersistNSyncType = (stateCreator, options) => (set, g
 	/** timeout 0 is enough. timeout 100 is added to avoid server and client render content mismatch error */
 	if (savedState) setTimeout(() => set({ ...get(), ...JSON.parse(savedState) }), 100);
 
-	const channel = globalThis.BroadcastChannel ? new BroadcastChannel(name) : undefined;
-
 	const set_: typeof set = (newStateOrPartialOrFunction, replace) => {
 		set(newStateOrPartialOrFunction, replace);
 		const newState = get() as { [k: string]: any };

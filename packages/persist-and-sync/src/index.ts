@@ -7,11 +7,15 @@ export type PersistNSyncOptionsType = {
 	include?: (string | RegExp)[];
 	exclude?: (string | RegExp)[];
 	storage?: "localStorage" | "sessionStorage" | "cookies";
+	/** @defaultValue 100 */
+	initDelay?: number;
 };
 type PersistNSyncType = <T>(
 	f: StateCreator<T, [], []>,
 	options: PersistNSyncOptionsType,
 ) => StateCreator<T, [], []>;
+
+const DEFAULT_INIT_DELAY = 100;
 
 function getItem(options: PersistNSyncOptionsType) {
 	const { storage } = options;
@@ -46,7 +50,8 @@ export const persistNSync: PersistNSyncType = (stateCreator, options) => (set, g
 	const { name } = options;
 	const savedState = getItem(options);
 	/** timeout 0 is enough. timeout 100 is added to avoid server and client render content mismatch error */
-	if (savedState) setTimeout(() => set({ ...get(), ...JSON.parse(savedState) }), 100);
+	const delay = options.initDelay === undefined ? DEFAULT_INIT_DELAY : options.initDelay;
+	if (savedState) setTimeout(() => set({ ...get(), ...JSON.parse(savedState) }), delay);
 
 	const set_: typeof set = (newStateOrPartialOrFunction, replace) => {
 		set(newStateOrPartialOrFunction, replace);
@@ -55,10 +60,7 @@ export const persistNSync: PersistNSyncType = (stateCreator, options) => (set, g
 	};
 
 	window.addEventListener("storage", e => {
-		if (e.key === name) {
-			const newState = JSON.parse(e.newValue || "{}");
-			set({ ...get(), ...newState });
-		}
+		if (e.key === name) set({ ...get(), ...JSON.parse(e.newValue || "{}") });
 	});
 	return stateCreator(set_, get, store);
 };
@@ -76,22 +78,12 @@ const getKeysToPersistAndSyncMemoised = (() => {
 		const { exclude, include } = options;
 
 		const keysToInlcude = include?.length
-			? keys.filter(key => {
-					for (const patternOrKey of include) {
-						if (typeof patternOrKey === "string" && key === patternOrKey) return true;
-						else if (patternOrKey instanceof RegExp && patternOrKey.test(key)) return true;
-					}
-					return false;
-			  })
+			? keys.filter(key => matchPatternOrKey(key, include))
 			: keys;
 
-		const keysToPersistAndSync = keysToInlcude.filter(key => {
-			for (const patternOrKey of exclude || []) {
-				if (typeof patternOrKey === "string" && key === patternOrKey) return false;
-				else if (patternOrKey instanceof RegExp && patternOrKey.test(key)) return false;
-			}
-			return true;
-		});
+		const keysToPersistAndSync = keysToInlcude.filter(
+			key => !matchPatternOrKey(key, exclude || []),
+		);
 		return keysToPersistAndSync;
 	};
 
@@ -102,6 +94,14 @@ const getKeysToPersistAndSyncMemoised = (() => {
 		return persistAndSyncKeysCache[cacheKey];
 	};
 })();
+
+function matchPatternOrKey(key: string, patterns: (string | RegExp)[]) {
+	for (const patternOrKey of patterns) {
+		if (typeof patternOrKey === "string" && key === patternOrKey) return true;
+		else if (patternOrKey instanceof RegExp && patternOrKey.test(key)) return true;
+	}
+	return false;
+}
 
 function saveAndSync({ newState, options }: SaveAndSyncProps) {
 	const keysToPersistAndSync = getKeysToPersistAndSyncMemoised(Object.keys(newState), options);

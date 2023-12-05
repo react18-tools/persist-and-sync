@@ -16,4 +16,11 @@ describe.concurrent("Setting state", () => {
 		expect(result.current.count).toBe(5);
 		expect(localStorage.getItem("example")).toBe('{"count":5}');
 	});
+
+	test("test exclude key", async ({ expect }) => {
+		const { result } = renderHook(() => useCookieStore());
+		act(() => result.current.set_Count(6));
+		expect(result.current._count).toBe(6);
+		expect(localStorage.getItem("example")).not.toBe('{"count":6}');
+	});
 });

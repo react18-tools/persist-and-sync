@@ -18,9 +18,17 @@
 
 ```bash
 $ pnpm add persist-and-sync
-# or
+```
+
+**or**
+
+```bash
 $ npm install persist-and-sync
-# or
+```
+
+**or**
+
+```bash
 $ yarn add persist-and-sync
 ```
 
@@ -43,7 +51,7 @@ const useStore = create<MyStore>(
 			count: 0,
 			set: n => set({ count: n }),
 		}),
-		{ name: "my-channel" },
+		{ name: "my-example" },
 	),
 );
 ```

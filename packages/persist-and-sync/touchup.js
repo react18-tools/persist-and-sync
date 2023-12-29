@@ -43,4 +43,7 @@ fs.writeFileSync(
 	JSON.stringify(packageJson, null, 2),
 );
 
-fs.copyFileSync(path.resolve(__dirname, "..","..", "README.md"), path.resolve(__dirname, "dist", "README.md"));
+fs.copyFileSync(
+	path.resolve(__dirname, "..", "..", "README.md"),
+	path.resolve(__dirname, "dist", "README.md"),
+);

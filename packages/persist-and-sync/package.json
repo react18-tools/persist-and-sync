@@ -7,12 +7,12 @@
 	"types": "dist/index.d.ts",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/mayank1513/persist-and-sync.git"
+		"url": "git+https://github.com/react18-tools/persist-and-sync.git"
 	},
 	"bugs": {
-		"url": "https://github.com/mayank1513/persist-and-sync/issues"
+		"url": "https://github.com/react18-tools/persist-and-sync/issues"
 	},
-	"homepage": "https://github.com/mayank1513/persist-and-sync#readme",
+	"homepage": "https://github.com/react18-tools/persist-and-sync#readme",
 	"sideEffects": false,
 	"license": "MIT",
 	"scripts": {

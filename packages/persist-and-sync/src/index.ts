@@ -1,6 +1,6 @@
 import { StateCreator } from "zustand";
 
-export type PersistNSyncOptionsType = {
+export interface PersistNSyncOptionsType {
 	name: string;
 	/** @deprecated */
 	regExpToIgnore?: RegExp;
@@ -10,6 +10,7 @@ export type PersistNSyncOptionsType = {
 	/** @defaultValue 100 */
 	initDelay?: number;
 };
+
 type PersistNSyncType = <T>(
 	f: StateCreator<T, [], []>,
 	options: PersistNSyncOptionsType,
@@ -42,12 +43,6 @@ export const persistNSync: PersistNSyncType = (stateCreator, options) => (set, g
 	if (!globalThis.localStorage) return stateCreator(set, get, store);
 	if (!options.storage) options.storage = "localStorage";
 
-	/** temporarily support `regExpToIgnore` */
-	if (!options.exclude) options.exclude = [];
-	if (options.regExpToIgnore) options.exclude.push(options.regExpToIgnore);
-	/** end of temporarily support `regExpToIgnore` */
-
-	const { name } = options;
 	const savedState = getItem(options);
 	/** timeout 0 is enough. timeout 100 is added to avoid server and client render content mismatch error */
 	const delay = options.initDelay === undefined ? DEFAULT_INIT_DELAY : options.initDelay;
@@ -60,7 +55,7 @@ export const persistNSync: PersistNSyncType = (stateCreator, options) => (set, g
 	};
 
 	window.addEventListener("storage", e => {
-		if (e.key === name) set({ ...get(), ...JSON.parse(e.newValue || "{}") });
+		if (e.key === options.name) set({ ...get(), ...JSON.parse(e.newValue || "{}") });
 	});
 	return stateCreator(set_, get, store);
 };
@@ -104,6 +99,13 @@ function matchPatternOrKey(key: string, patterns: (string | RegExp)[]) {
 }
 
 function saveAndSync({ newState, options }: SaveAndSyncProps) {
+	if (newState.__persistNSyncOptions) Object.assign(options, newState.__persistNSyncOptions);
+	
+	/** temporarily support `regExpToIgnore` */
+	if (!options.exclude) options.exclude = [];
+	if (options.regExpToIgnore) options.exclude.push(options.regExpToIgnore);
+	/** end of temporarily support `regExpToIgnore` */
+
 	const keysToPersistAndSync = getKeysToPersistAndSyncMemoised(Object.keys(newState), options);
 
 	if (keysToPersistAndSync.length === 0) return;

@@ -11,8 +11,8 @@ export default defineConfig({
 		setupFiles: ["vitest.setup.ts"],
 		coverage: {
 			reporter: ["text", "json", "clover", "html"],
+			include: ["src/**/*.ts"],
 		},
-		threads: true,
 		mockReset: false,
 	},
 });

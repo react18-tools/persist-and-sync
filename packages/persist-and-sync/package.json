@@ -16,8 +16,8 @@
 	"sideEffects": false,
 	"license": "MIT",
 	"scripts": {
-		"build": "tsc && node createPackageJSON.js",
-		"publish-package": "cp ../../README.md dist && cd dist && npm publish",
+		"build": "tsc && node touchup.js",
+		"publish-package": "cd dist && npm publish",
 		"test": "vitest run --coverage"
 	},
 	"funding": {

@@ -55,10 +55,8 @@ export function clearItem(name: string, storage?: StorageType) {
 
 export const persistNSync: PersistNSyncType = (stateCreator, options) => (set, get, store) => {
 	/** avoid error during serverside render */
-	if (!globalThis.localStorage) {
-		console.log("Storage APIs not supported.");
-		return stateCreator(set, get, store);
-	}
+	if (!globalThis.localStorage) return stateCreator(set, get, store);
+
 	if (!options.storage) options.storage = "localStorage";
 
 	/** timeout 0 is enough. timeout 100 is added to avoid server and client render content mismatch error */

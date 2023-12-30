@@ -1,9 +1,9 @@
-import { act, cleanup, renderHook } from "@testing-library/react";
+import { act, cleanup, fireEvent, renderHook } from "@testing-library/react";
 
 import { afterEach, describe, test } from "vitest";
 import { useCookieStore, useMyStore, useStoreWithOptions } from "./store";
 
-describe.concurrent("Setting state", () => {
+describe.concurrent("Persist and Sync", () => {
 	afterEach(cleanup);
 	test("test initial state", async ({ expect }) => {
 		const { result } = renderHook(() => useMyStore());
@@ -75,9 +75,11 @@ describe.concurrent("Setting state", () => {
 		expect(localStorage.getItem("example")).toContain('"count":20');
 	});
 
-	// test("No localStorage", ({expect}) => {
-	// 	const localStorage = globalThis.localStorage;
-	// 	globalThis.localStorage = undefined;
-
-	// })
+	test("Storage event", async ({ expect }) => {
+		const hook = renderHook(() => useMyStore());
+		await act(() =>
+			fireEvent(window, new StorageEvent("storage", { key: "example", newValue: '{"count":6}' })),
+		);
+		expect(hook.result.current.count).toBe(6);
+	});
 });

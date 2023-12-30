@@ -17,32 +17,3 @@ export const create = <S>(createState: StateCreator<S>) => {
 afterEach(() => {
 	act(() => storeResetFns.forEach(resetFn => resetFn()));
 });
-
-declare global {
-	var tmp_store: { [key: string]: string };
-}
-
-globalThis.tmp_store = {};
-
-globalThis.localStorage = {
-	length: Object.keys(tmp_store).length,
-	clear: () => {
-		tmp_store = {};
-	},
-	key: (index: number) => Object.keys(tmp_store)[index],
-	removeItem: (key: string) => {
-		delete tmp_store[key];
-	},
-	setItem: (key: string, item: string) => {
-		tmp_store[key] = item;
-	},
-	getItem: (key: string) => tmp_store[key],
-};
-
-function channelMock() {}
-channelMock.prototype.onmessage = function () {};
-channelMock.prototype.postMessage = function (data) {
-	this.onmessage({ data });
-};
-// @ts-ignore
-global.BroadcastChannel = channelMock;

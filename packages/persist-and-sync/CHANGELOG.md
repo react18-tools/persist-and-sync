@@ -1,5 +1,11 @@
 # persist-and-sync
 
+## 1.2.0
+
+### Minor Changes
+
+- 933c240: Add ability to change options at Runtime & add clearItem method
+
 ## 1.1.2
 
 ### Patch Changes

@@ -125,7 +125,7 @@ function saveAndSync({ newState, prevState, options }: SaveAndSyncProps) {
 	if (newState.__persistNSyncOptions) {
 		const prevStorage = prevState.__persistNSyncOptions?.storage || options.storage;
 		const newStorage = newState.__persistNSyncOptions?.storage || options.storage;
-		if (prevState !== newStorage) {
+		if (prevStorage !== newStorage) {
 			const name = prevState.__persistNSyncOptions.name || options.name;
 			clearItem(name, prevStorage);
 		}

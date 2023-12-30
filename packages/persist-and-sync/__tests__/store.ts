@@ -16,7 +16,7 @@ export const useMyStore = create<MyStoreType>(
 			setCount: count => set(state => ({ ...state, count })),
 			set_Count: _count => set(state => ({ ...state, _count })),
 		}),
-		{ name: "example", exclude: [/^_/] },
+		{ name: "example", exclude: [/^_/], initDelay: 0 },
 	),
 );
 

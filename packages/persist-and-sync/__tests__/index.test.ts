@@ -41,4 +41,43 @@ describe.concurrent("Setting state", () => {
 		expect(result.current._count).toBe(10);
 		expect(localStorage.getItem("example")).toContain('"_count":10');
 	});
+
+	test("Change storage type", async ({ expect }) => {
+		const { result } = renderHook(() => useStoreWithOptions());
+		act(() => result.current.setCount(6));
+		expect(result.current.count).toBe(6);
+		expect(localStorage.getItem("example")).toContain('"count":6');
+		act(() =>
+			result.current.setOptions({
+				...result.current.__persistNSyncOptions,
+				storage: "sessionStorage",
+			}),
+		);
+
+		act(() =>
+			result.current.setOptions({
+				...result.current.__persistNSyncOptions,
+				storage: "cookies",
+			}),
+		);
+
+		act(() => result.current.setCount(120));
+
+		act(() =>
+			result.current.setOptions({
+				...result.current.__persistNSyncOptions,
+				storage: "localStorage",
+			}),
+		);
+
+		act(() => result.current.setCount(20));
+		expect(result.current.count).toBe(20);
+		expect(localStorage.getItem("example")).toContain('"count":20');
+	});
+
+	// test("No localStorage", ({expect}) => {
+	// 	const localStorage = globalThis.localStorage;
+	// 	globalThis.localStorage = undefined;
+
+	// })
 });

@@ -13,6 +13,7 @@
 - ✅ Share state between multiple browsing contexts
 - ✅ Additional control over which fields to `persist-and-sync` and which to ignore
 - ✅ Optimized for performance using memoization and closures.
+- ✅ Update options at runtime by setting `__persistNSyncOptions` in your store.
 
 ## Install
 
@@ -60,7 +61,9 @@ const useStore = create<MyStore>(
 
 ## Advanced Usage (Customizations)
 
-In several cases you might want to exclude several fields from syncing. To support this scenario, we provide a mechanism to exclude fields based on list of fields or regular expression.
+### PersistNSyncOptions
+
+In several cases, you might want to exclude several fields from syncing. To support this scenario, we provide a mechanism to exclude fields based on a list of fields or regular expressions.
 
 ```typescript
 type PersistNSyncOptionsType = {
@@ -95,13 +98,58 @@ export const useMyStore = create<MyStoreType>()(
 
 > It is good to note here that each element of `include` and `exclude` array can either be a string or a regular expression.
 > To use regular expression, you should either use `new RegExp()` or `/your-expression/` syntax. Double or single quoted strings are not treated as regular expression.
-> You can specify whether to use either `"localStorage"`, `"sessionStorage"`, or `"cookies"` to persist the state - default `"localStorage"`.
+> You can specify whether to use either `"localStorage"`, `"sessionStorage"`, or `"cookies"` to persist the state - default `"localStorage"`. Please note that `"sessionStorage"` is not persisted. Hence can be used for sync only scenarios.
+
+### Updating options at runtime
+
+Since version 1.2, you can also update the options at runTime by setting `__persistNSyncOptions` in your Zustand state.
+
+**Example**
+
+```ts
+interface StoreWithOptions {
+	count: number;
+	_count: number;
+	__persistNSyncOptions: PersistNSyncOptionsType;
+	setCount: (c: number) => void;
+	set_Count: (c: number) => void;
+	setOptions: (__persistNSyncOptions: PersistNSyncOptionsType) => void;
+}
+
+const defaultOptions = { name: "example", include: [/count/], exclude: [/^_/] };
+
+export const useStoreWithOptions = create<StoreWithOptions>(
+	persistNSync(
+		set => ({
+			count: 0,
+			_count: 0 /** skipped as it matches the regexp provided */,
+			__persistNSyncOptions: defaultOptions,
+			setCount: count => set(state => ({ ...state, count })),
+			set_Count: _count => set(state => ({ ...state, _count })),
+			setOptions: __persistNSyncOptions => set(state => ({ ...state, __persistNSyncOptions })),
+		}),
+		defaultOptions,
+	),
+);
+```
+
+### Clear Storage
+
+Starting from version 1.2, you can also clear the persisted data by calling `clearStorage` function. It takes `name` of your store (`name` passed in `options` while creating the store), and optional `storageType` parameters.   
+
+```ts
+import { clearStorage } from "persist-and-sync";
+
+...
+	clearStorage("my-store", "cookies");
+...
+```
 
 ## Legacy / Deprecated
 
-#### Ignore / filter out fields based on regExp
+#### Ignore/filter out fields based on regExp
 
-In several cases you might want to exclude several fields from syncing. To support this scenario, we provide a mechanism to exclude fields based on regExp. Just pass `regExpToIgnore` (optional - default -> undefined) in options object.
+In several cases, you might want to exclude several fields from syncing. To support this scenario, we provide a mechanism to exclude fields based on regExp. Just pass `regExpToIgnore` (optional - default -> undefined) in the options object.
 
 ```ts
 // to ignore fields containing a slug
@@ -122,7 +170,7 @@ For more details about regExp check out - [JS RegExp](https://www.w3schools.com/
 
 ### Exact match
 
-For exactly matching a parameter/field use `/^your-field-name$/`. `^` forces match from the first caracter and similarly, `$` forces match until the last character.
+For exactly matching a parameter/field use `/^your-field-name$/`. `^` forces match from the first character and similarly, `$` forces match until the last character.
 
 ### Ignore multiple fields with exact match
 

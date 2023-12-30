@@ -39,7 +39,7 @@ function setItem(options: PersistNSyncOptionsType, value: string) {
 	else localStorage.setItem(options.name, value);
 }
 
-export function clearItem(name: string, storage?: StorageType) {
+export function clearStorage(name: string, storage?: StorageType) {
 	switch (storage || "localStorage") {
 		case "localStorage":
 			localStorage.removeItem(name);
@@ -125,7 +125,7 @@ function saveAndSync({ newState, prevState, options }: SaveAndSyncProps) {
 		const newStorage = newState.__persistNSyncOptions?.storage || options.storage;
 		if (prevStorage !== newStorage) {
 			const name = prevState.__persistNSyncOptions.name || options.name;
-			clearItem(name, prevStorage);
+			clearStorage(name, prevStorage);
 		}
 		Object.assign(options, newState.__persistNSyncOptions);
 	}
@@ -140,6 +140,8 @@ function saveAndSync({ newState, prevState, options }: SaveAndSyncProps) {
 	if (keysToPersistAndSync.length === 0) return;
 
 	const stateToStore: Record<string, any> = {};
-	keysToPersistAndSync.forEach(key => (stateToStore[key] = newState[key]));
-	setItem(options, JSON.stringify(stateToStore));
+	keysToPersistAndSync
+		.filter(key => prevState[key] !== newState[key]) // using only shallow equality
+		.forEach(key => (stateToStore[key] = newState[key]));
+	if (Object.keys(stateToStore).length) setItem(options, JSON.stringify(stateToStore));
 }

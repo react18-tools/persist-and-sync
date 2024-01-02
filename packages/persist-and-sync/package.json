@@ -1,7 +1,7 @@
 {
 	"name": "persist-and-sync",
 	"author": "Mayank Kumar Chaudhari <https://mayank-chaudhari.vercel.app>",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "Zustand middleware to easily persist and sync Zustand state between tabs and windows",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "tsc && node touchup.js",
-		"publish-package": "cd dist && npm publish && node ../legacy-support.js && npm publish",
+		"publish-package": "cd dist && npm publish && node ../legacy-support.js && npm publish --provenance --access public",
 		"test": "vitest run --coverage"
 	},
 	"funding": {

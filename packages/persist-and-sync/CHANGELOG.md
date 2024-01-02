@@ -1,5 +1,11 @@
 # persist-and-sync
 
+## 1.2.1
+
+### Patch Changes
+
+- Add provance
+
 ## 1.2.0
 
 ### Minor Changes

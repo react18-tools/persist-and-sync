@@ -1,5 +1,11 @@
 # persist-and-sync
 
+## 1.2.2
+
+### Patch Changes
+
+- Update peerDependencies
+
 ## 1.2.1
 
 ### Patch Changes

@@ -36,7 +36,7 @@
 		"zustand": "^4.4.7"
 	},
 	"peerDependencies": {
-		"zustand": "3-5"
+		"zustand": ">=3"
 	},
 	"keywords": [
 		"web",

@@ -19,14 +19,14 @@ jobs:
         working-directory: ./packages/persist-and-sync
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           registry-url: https://registry.npmjs.org
-          node-version: 18
+          node-version: 20
       - run: npm i -g pnpm && pnpm i
         name: Install dependencies
         # fail and not publish if any of the unit tests are failing

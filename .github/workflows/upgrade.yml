@@ -1,0 +1,36 @@
+name: Update dependencies
+
+on:
+  schedule:
+    - cron: "0 */8 * * *"
+jobs:
+  update-deps:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-node@v4
+        with:
+          registry-url: https://registry.npmjs.org
+          node-version: 20
+      - name: Setup Git
+        run: |
+          git config --global user.name "mayank1513"
+          git config --global user.email "mayank.srmu@gmail.com"
+          git fetch
+          git checkout main
+          git pull
+      - run: npm i -g pnpm && pnpm i --no-frozen-lockfile
+        name: Install dependencies
+      - run: git stash --include-untracked
+        name: clean up working directory
+      - run: pnpx @turbo/codemod update . && pnpm update --latest -r
+        name: Update dependencies
+      - run: pnpm build --filter @example/nextjs
+        name: Build all apps to make sure it is not broken due to dependency upgrades
+      - name: Save upgraded packages back to repo
+        run: echo $(date +%F_%H:%M:%S) > .lst && git add . && git commit -m "upgrade deps && docs [skip ci]" && git push origin main

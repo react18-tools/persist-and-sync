@@ -1,5 +1,5 @@
 "use client";
-export default function OpenNewTab(): JSX.Element {
+export default function OpenNewTab() {
 	return (
 		<button
 			className="btn btn-outline mt-4"

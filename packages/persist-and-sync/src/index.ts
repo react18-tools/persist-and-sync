@@ -50,6 +50,7 @@ export function clearStorage(name: string, storage?: StorageType) {
 		case "cookies":
 			document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:01 GMT; SameSite=Strict;`;
 			break;
+		default:
 	}
 }
 
@@ -69,6 +70,7 @@ export const persistNSync: PersistNSyncType = (stateCreator, options) => (set, g
 
 	const set_: typeof set = (newStateOrPartialOrFunction, replace) => {
 		const prevState = get() as Record<string, any>;
+		// @ts-expect-error -- Zustand v5 introduced stricter type checking
 		set(newStateOrPartialOrFunction, replace);
 		const newState = get() as Record<string, any>;
 		saveAndSync({ newState, prevState, options });

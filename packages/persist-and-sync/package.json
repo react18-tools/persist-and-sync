@@ -25,15 +25,15 @@
 		"url": "https://github.com/sponsors/mayank1513"
 	},
 	"devDependencies": {
-		"@testing-library/react": "^14.1.2",
-		"@types/node": "^20.10.6",
-		"@vitejs/plugin-react": "^4.2.1",
-		"@vitest/coverage-v8": "^1.1.0",
-		"jsdom": "^23.0.1",
-		"octokit": "^3.1.2",
-		"typescript": "^5.3.3",
-		"vitest": "^1.1.0",
-		"zustand": "^4.4.7"
+		"@testing-library/react": "^16.3.0",
+		"@types/node": "^22.15.21",
+		"@vitejs/plugin-react": "^4.4.1",
+		"@vitest/coverage-v8": "^3.1.4",
+		"jsdom": "^26.1.0",
+		"octokit": "^5.0.2",
+		"typescript": "^5.8.3",
+		"vitest": "^3.1.4",
+		"zustand": "^5.0.5"
 	},
 	"peerDependencies": {
 		"zustand": ">=3"

@@ -1,5 +1,11 @@
 # persist-and-sync
 
+## 1.2.3
+
+### Patch Changes
+
+- Upgrade Zustand support to v5
+
 ## 1.2.2
 
 ### Patch Changes

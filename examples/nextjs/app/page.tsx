@@ -2,7 +2,7 @@ import Counter from "./Counter";
 import OpenNewTab from "./OpenNewTab";
 import styles from "./page.module.css";
 
-export default function Page(): JSX.Element {
+export default function Page() {
 	return (
 		<div className={styles.container}>
 			<header>

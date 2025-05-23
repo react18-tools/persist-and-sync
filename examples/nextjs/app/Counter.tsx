@@ -6,7 +6,7 @@ interface CounterProps {
 	synced?: boolean;
 }
 
-export default function Counter({ synced = false }: CounterProps): JSX.Element {
+export default function Counter({ synced = false }: CounterProps) {
 	const [count, setCount] = useMyStore(state =>
 		synced ? [state.count, state.setCount] : [state._count, state.set_Count],
 	);

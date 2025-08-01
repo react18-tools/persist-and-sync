@@ -30,7 +30,7 @@ jobs:
         name: clean up working directory
       - run: pnpx @turbo/codemod update . && pnpm update --latest -r
         name: Update dependencies
-      - run: pnpm build --filter @example/nextjs
+      - run: pnpm build --filter nextjs-example
         name: Build all apps to make sure it is not broken due to dependency upgrades
       - name: Save upgraded packages back to repo
         run: echo $(date +%F_%H:%M:%S) > .lst && git add . && git commit -m "upgrade deps && docs [skip ci]" && git push origin main

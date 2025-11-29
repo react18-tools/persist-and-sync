@@ -10,7 +10,7 @@
   "devDependencies": {
     "@changesets/cli": "^2.29.8",
     "eslint": "^9.39.1",
-    "prettier": "^3.7.1",
+    "prettier": "^3.7.2",
     "tsconfig": "workspace:*",
     "turbo": "^2.6.1"
   },

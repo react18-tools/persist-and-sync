@@ -13,7 +13,7 @@
 		"persist-and-sync": "workspace:*",
 		"react": "^19.2.3",
 		"react-dom": "^19.2.3",
-		"zustand": "^5.0.9"
+		"zustand": "^5.0.10"
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "^16.1.1",

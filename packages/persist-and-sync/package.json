@@ -25,7 +25,7 @@
 		"url": "https://github.com/sponsors/mayank1513"
 	},
 	"devDependencies": {
-		"@testing-library/react": "^16.3.1",
+		"@testing-library/react": "^16.3.2",
 		"@types/node": "^25.0.9",
 		"@vitejs/plugin-react": "^5.1.2",
 		"@vitest/coverage-v8": "^4.0.17",

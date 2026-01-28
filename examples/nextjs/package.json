@@ -9,14 +9,14 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
-		"next": "^16.1.5",
+		"next": "^16.1.6",
 		"persist-and-sync": "workspace:*",
 		"react": "^19.2.4",
 		"react-dom": "^19.2.4",
 		"zustand": "^5.0.10"
 	},
 	"devDependencies": {
-		"@next/eslint-plugin-next": "^16.1.5",
+		"@next/eslint-plugin-next": "^16.1.6",
 		"@types/node": "^25.0.10",
 		"@types/react": "^19.2.10",
 		"@types/react-dom": "^19.2.3",

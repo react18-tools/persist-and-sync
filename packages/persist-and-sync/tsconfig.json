@@ -4,9 +4,9 @@
 		"rootDir": "./src",
 		"declaration": true,
 		"esModuleInterop": true,
-		"moduleResolution": "node",
+		"moduleResolution": "nodenext",
 		"skipLibCheck": true,
-		"module": "CommonJS",
+		"module": "nodenext",
 		"strict": true,
 		"outDir": "dist"
 	},

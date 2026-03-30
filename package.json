@@ -12,8 +12,11 @@
     "eslint": "^10.1.0",
     "prettier": "^3.8.1",
     "tsconfig": "workspace:*",
-    "turbo": "^2.8.20"
+    "turbo": "^2.8.21"
   },
   "name": "turbo-template",
-  "packageManager": "pnpm@10.11.0"
+  "packageManager": "pnpm@10.11.0",
+  "dependencies": {
+    "@promptshield/cli": "^1.0.0"
+  }
 }

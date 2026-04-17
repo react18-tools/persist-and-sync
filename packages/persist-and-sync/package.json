@@ -31,7 +31,7 @@
 		"@vitest/coverage-v8": "^4.1.4",
 		"jsdom": "^29.0.2",
 		"octokit": "^5.0.5",
-		"typescript": "^6.0.2",
+		"typescript": "^6.0.3",
 		"vitest": "^4.1.4",
 		"zustand": "^5.0.12"
 	},

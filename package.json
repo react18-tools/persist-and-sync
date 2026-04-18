@@ -8,8 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,css,scss}\""
   },
   "devDependencies": {
-    "@changesets/cli": "^2.30.0",
-    "eslint": "^10.2.0",
+    "@changesets/cli": "^2.31.0",
+    "eslint": "^10.2.1",
     "prettier": "^3.8.3",
     "tsconfig": "workspace:*",
     "turbo": "^2.9.6"

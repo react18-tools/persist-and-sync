@@ -17,6 +17,6 @@
   "name": "turbo-template",
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
-    "@promptshield/cli": "^1.0.1"
+    "@promptshield/cli": "^1.0.4"
   }
 }

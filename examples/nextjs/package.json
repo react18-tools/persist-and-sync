@@ -17,8 +17,8 @@
 	},
 	"devDependencies": {
 		"@next/eslint-plugin-next": "^16.2.7",
-		"@types/node": "^25.9.1",
-		"@types/react": "^19.2.16",
+		"@types/node": "^25.9.2",
+		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
 		"eslint-config-custom": "workspace:*",
 		"tsconfig": "workspace:*",

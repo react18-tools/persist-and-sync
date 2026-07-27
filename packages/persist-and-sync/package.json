@@ -29,7 +29,7 @@
 		"@types/node": "^26.1.1",
 		"@vitejs/plugin-react": "^6.0.4",
 		"@vitest/coverage-v8": "^4.1.10",
-		"jsdom": "^29.1.1",
+		"jsdom": "^30.0.0",
 		"octokit": "^5.0.5",
 		"typescript": "^7.0.2",
 		"vitest": "^4.1.10",

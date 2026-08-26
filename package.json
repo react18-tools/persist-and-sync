@@ -12,7 +12,7 @@
     "eslint": "^10.9.1",
     "prettier": "^3.9.6",
     "tsconfig": "workspace:*",
-    "turbo": "^2.10.11"
+    "turbo": "^2.10.12"
   },
   "name": "turbo-template",
   "packageManager": "pnpm@10.11.0",

@@ -33,7 +33,7 @@
 		"octokit": "^5.0.5",
 		"typescript": "^7.0.2",
 		"vitest": "^5.0.5",
-		"zustand": "^5.0.15"
+		"zustand": "^5.0.16"
 	},
 	"peerDependencies": {
 		"zustand": ">=3"
